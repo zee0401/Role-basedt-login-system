@@ -61,6 +61,13 @@ const Header = () => {
                   </Link>
                 </li>
               )}
+              {userRoutes.includes("settings") && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/settings">
+                    Settings
+                  </Link>
+                </li>
+              )}
             </ul>
             <ul className="navbar-nav">
               {!currentUser && !isSignInPage && (

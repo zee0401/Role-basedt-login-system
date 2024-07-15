@@ -20,9 +20,9 @@ const SignInPage = () => {
       // Signed in
       const user = userCredential.user;
       console.log("User signed in:", user);
-      navigate("/"); // Redirect to homepage or appropriate route
+      navigate("/");
     } catch (error) {
-      setError(error.message); // Handle sign-in errors
+      setError(error.message);
     }
   };
 
@@ -30,6 +30,9 @@ const SignInPage = () => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
+          <h1>
+            <h2 className="card-title text-center">Welcome to Auth App!</h2>
+          </h1>
           <div className="card">
             <div className="card-body">
               <h2 className="card-title text-center mb-4">Sign In</h2>

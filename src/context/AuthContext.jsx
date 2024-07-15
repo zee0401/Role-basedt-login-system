@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }) => {
         });
       } else {
         setUserRoutes([]);
-        console.log("User document does not exist.");
       }
     } catch (error) {
       console.error("Error fetching user routes:", error.message);

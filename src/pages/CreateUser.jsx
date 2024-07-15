@@ -35,35 +35,30 @@ const CreateUser = () => {
     const { name, email, password, phoneno } = data;
 
     try {
-      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      // Get the newly created user
       const user = userCredential?.user;
 
       if (!user) {
         throw new Error("User creation failed.");
       }
 
-      // Sign out the user immediately after creation (if still signed in)
       await signOut(auth);
 
-      // Store user data in Firestore
       const userRef = collection(firestore, "users");
       await addDoc(userRef, {
         uid: user.uid,
         name,
         email: user.email,
         phoneno,
-        routes: selectedRoutes, // Include selected routes here
+        routes: selectedRoutes,
         createdAt: serverTimestamp(),
       });
 
-      // Reset form fields and selected routes
       reset({
         name: "",
         email: "",
@@ -73,11 +68,10 @@ const CreateUser = () => {
 
       setSelectedRoutes([]);
 
-      // Provide feedback to the user (optional)
       alert("User created successfully!");
     } catch (error) {
       console.error("Error creating user:", error.message);
-      // Handle error and provide feedback to the user (optional)
+
       alert(`Error creating user: ${error.message}`);
     }
   };

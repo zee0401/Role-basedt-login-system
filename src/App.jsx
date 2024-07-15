@@ -13,6 +13,7 @@ import SignIn from "./pages/SignIn";
 import Test from "./pages/Test";
 import Header from "./components/Header";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -52,12 +53,10 @@ function App() {
         <Route element={<ProtectedRoute requiredRoutes={["test"]} />}>
           <Route path="/test" element={<Test />} />
         </Route>
+        <Route element={<ProtectedRoute requiredRoutes={["settings"]} />}>
+          <Route path="/settings" element={<Settings />} />
+        </Route>
 
-        {/* <Route
-          path="/test"
-          element={<ProtectedRoute element={Test} requiredRoutes={["test"]} />}
-        /> */}
-        {/* Fallback route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
